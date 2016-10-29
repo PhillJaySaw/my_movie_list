@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 =begin
    This is my first ruby program.
    It is a simple program that will collect
@@ -25,6 +24,10 @@ class Movie
       $my_movies.push(self)
    end
 
+   def to_s
+      "Title: #@title\nGenre: #@genre\nRating: #{@rating}/10"
+   end
+
    attr_accessor :title, :genre, :rating
 end
 
@@ -45,5 +48,8 @@ puts "I rated the movie #{legend.rating} out of 10"
 the_shining = Movie.new("The Shining", "thriller", 8)
 interstellar = Movie.new("Interstellar", "drama", 9)
 lord_of_the_rings_1 = Movie.new("The Lord of the Rings - Fellowship of the ring", "fantasy", 10)
+apollo_13 = Movie.new("Apollo 13", "sci-fi", 8)
 
-show_movie_list
+
+sort_array = $my_movies.sort { |a,b| a.title.downcase <=> b.title.downcase}
+sort_array.each {|x| puts x.title}
